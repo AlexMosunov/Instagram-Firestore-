@@ -124,6 +124,7 @@ extension LoginController: FormViewModel {
         loginButton.backgroundColor = viewModel.buttonBackgroundColor
         loginButton.setTitleColor(viewModel.buttonTitleColor, for: .normal)
         loginButton.isEnabled = viewModel.formIsValid
+        print("loginButton.isEnabled - \(loginButton.isEnabled)")
     }
 }
 

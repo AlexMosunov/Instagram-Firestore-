@@ -12,6 +12,7 @@ class RegistrationController: UIViewController {
     //MARK: Properties
     
     private var viewModel = RegistrationViewModel()
+    private var profileImage: UIImage?
     
     private let plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -35,7 +36,11 @@ class RegistrationController: UIViewController {
     
     private let fullnameTextField = CustomTextField(placeholer: "Fullname")
     private let usernameTextField = CustomTextField(placeholer: "Username")
-    private let signUpButton = LoginButton(title: "Sign Up")
+    private lazy var signUpButton: LoginButton = {
+        let button = LoginButton(title: "Sign Up")
+        button.addTarget(self, action: #selector(handleSignUp), for: .touchUpInside)
+        return button
+    }()
     
     private let alreadyHaveAccountButton: UIButton = {
         let button = UIButton(type: .system)
@@ -56,6 +61,26 @@ class RegistrationController: UIViewController {
     }
     
     // MARK: Actions
+    
+    @objc func handleSignUp() {
+        // unwrapping data entered by user
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text,
+              let fullname = fullnameTextField.text,
+              let username = usernameTextField.text,
+              let profileImage = self.profileImage
+        else { return }
+        
+        // creating AuthCredentials struct with users unwrapped data
+        let credentials = AuthCredentials(email: email,
+                                          password: password,
+                                          fullname: fullname,
+                                          username: username,
+                                          image: profileImage)
+        
+        // registering user with credentials
+        AuthService.registerUser(withCredential: credentials)
+    }
     
     @objc func handleShowLogin() {
         navigationController?.popViewController(animated: true)
@@ -139,6 +164,7 @@ extension RegistrationController: UIImagePickerControllerDelegate, UINavigationC
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         guard let selectedImage = info[.editedImage] as? UIImage else { return }
+        profileImage = selectedImage
         
         plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
         plusPhotoButton.layer.masksToBounds = true
