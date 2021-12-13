@@ -32,7 +32,11 @@ class LoginController: UIViewController {
         return tf
     }()
     
-    private let loginButton = LoginButton(title: "Log In")
+    private let loginButton: LoginButton = {
+        let btn = LoginButton(title: "Log In")
+        btn.addTarget(self, action: #selector(handleLogin), for: .touchUpInside)
+        return btn
+    }()
     
     
     private let forgotPasswordButton: UIButton = {
@@ -64,9 +68,37 @@ class LoginController: UIViewController {
     
     // MARK: Actions
     
+    @objc func handleLogin() {
+        guard let email = emailTextField.text,
+              let password = passwordTextField.text
+        else { return }
+        
+        AuthService.logUserIn(withEmail: email, password: password) { result, error in
+            if let error = error {
+                print("DEBUG: Failed to log user in \(error.localizedDescription)")
+                return
+            }
+            
+            self.dismiss(animated: true)
+        }
+    }
+    
     @objc func handleShowSignUp() {
         let controller = RegistrationController()
         navigationController?.pushViewController(controller, animated: true)
+    }
+    
+    @objc func textDidChange(sender: UITextField) {
+        switch sender {
+        case emailTextField:
+            viewModel.email = sender.text
+        case passwordTextField:
+            viewModel.password = sender.text
+        default:
+            return
+        }
+        
+        updateForm()
     }
     
     // MARK: Helpers
@@ -100,20 +132,6 @@ class LoginController: UIViewController {
         passwordTextField.addTarget(self, action: #selector(textDidChange), for: .editingChanged)
     }
     
-    
-    
-    @objc func textDidChange(sender: UITextField) {
-        switch sender {
-        case emailTextField:
-            viewModel.email = sender.text
-        case passwordTextField:
-            viewModel.password = sender.text
-        default:
-            return
-        }
-        
-        updateForm()
-    }
 }
 
 
