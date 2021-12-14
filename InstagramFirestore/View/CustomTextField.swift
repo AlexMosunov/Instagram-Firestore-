@@ -19,6 +19,7 @@ class CustomTextField: UITextField {
         borderStyle = .none
         textColor = .white
         keyboardAppearance = .dark
+        autocorrectionType = .no
         backgroundColor = UIColor(white: 1, alpha: 0.1)
         setHeight(50)
         
