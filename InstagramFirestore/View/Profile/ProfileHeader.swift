@@ -6,22 +6,28 @@
 //
 
 import UIKit
+import SDWebImage
 
 class ProfileHeader: UICollectionReusableView {
     
     // MARK: Properties
     
+    var viewModel: ProfileHeaderViewModel? {
+        didSet {
+            configure()
+        }
+    }
+    
     let profileImageView: UIImageView = {
         let iv = UIImageView()
-        iv.image = UIImage(named: "venom-7")
         iv.contentMode = .scaleAspectFill
         iv.clipsToBounds = true
+        iv.backgroundColor = .lightGray
         return iv
     }()
     
     let nameLabel: UILabel = {
        let label = UILabel()
-        label.text = "Tom Hardy"
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
@@ -104,6 +110,15 @@ class ProfileHeader: UICollectionReusableView {
     }
     
     // MARK: Helpers
+    
+    func configure() {
+        guard let viewModel = viewModel else {
+            return
+        }
+        nameLabel.text = viewModel.fullname
+        profileImageView.sd_setImage(with: viewModel.profilerImageUrl)
+        
+    }
     
     func attributedStatText(value: Int, label: String) -> NSAttributedString {
         let attributedText = NSMutableAttributedString(string: "\(value)\n",
