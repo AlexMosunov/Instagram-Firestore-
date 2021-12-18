@@ -10,6 +10,9 @@
 		0876974B85927E93B2C053A4 /* Pods_InstagramFirestore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3817C0F4775FD37F036B0884 /* Pods_InstagramFirestore.framework */; };
 		9A48806D276BB10600A02528 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A48806C276BB10600A02528 /* UserCell.swift */; };
 		9A48807F276D192000A02528 /* UserCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A48807E276D192000A02528 /* UserCellViewModel.swift */; };
+		9A488081276E66A800A02528 /* UploadPostController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A488080276E66A800A02528 /* UploadPostController.swift */; };
+		9A488083276E706C00A02528 /* InputTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A488082276E706C00A02528 /* InputTextView.swift */; };
+		9A488085276E85C400A02528 /* PostService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A488084276E85C400A02528 /* PostService.swift */; };
 		9A78B28B2742E37F00D4ABE1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A78B28A2742E37F00D4ABE1 /* AppDelegate.swift */; };
 		9A78B28D2742E37F00D4ABE1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A78B28C2742E37F00D4ABE1 /* SceneDelegate.swift */; };
 		9A78B28F2742E37F00D4ABE1 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A78B28E2742E37F00D4ABE1 /* ViewController.swift */; };
@@ -46,6 +49,9 @@
 		5F07DE56D6E449979E2560FB /* Pods-InstagramFirestore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-InstagramFirestore.debug.xcconfig"; path = "Target Support Files/Pods-InstagramFirestore/Pods-InstagramFirestore.debug.xcconfig"; sourceTree = "<group>"; };
 		9A48806C276BB10600A02528 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		9A48807E276D192000A02528 /* UserCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCellViewModel.swift; sourceTree = "<group>"; };
+		9A488080276E66A800A02528 /* UploadPostController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadPostController.swift; sourceTree = "<group>"; };
+		9A488082276E706C00A02528 /* InputTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputTextView.swift; sourceTree = "<group>"; };
+		9A488084276E85C400A02528 /* PostService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostService.swift; sourceTree = "<group>"; };
 		9A78B2872742E37F00D4ABE1 /* InstagramFirestore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramFirestore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A78B28A2742E37F00D4ABE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A78B28C2742E37F00D4ABE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -153,6 +159,7 @@
 			children = (
 				9A78B2B3274392A600D4ABE1 /* Extensions.swift */,
 				9AA79C5E2768B0320039B885 /* Constants.swift */,
+				9A488082276E706C00A02528 /* InputTextView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -163,6 +170,7 @@
 				9AA79C27275FEE180039B885 /* ImageUploader.swift */,
 				9AA79C29275FEE240039B885 /* AuthService.swift */,
 				9AA79C5C2768AFEB0039B885 /* UserService.swift */,
+				9A488084276E85C400A02528 /* PostService.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -177,6 +185,7 @@
 				9AA79C46276871840039B885 /* ImageSelector */,
 				9AA79C48276871B30039B885 /* Notifications */,
 				9AA79C49276871CA0039B885 /* Profile */,
+				9A488080276E66A800A02528 /* UploadPostController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -394,6 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9A488081276E66A800A02528 /* UploadPostController.swift in Sources */,
 				9A78B2C42743D00800D4ABE1 /* CustomTextField.swift in Sources */,
 				9AA79C50276889360039B885 /* ProfileHeader+Constraints.swift in Sources */,
 				9A78B28F2742E37F00D4ABE1 /* ViewController.swift in Sources */,
@@ -416,7 +426,9 @@
 				9A78B2A62742E99200D4ABE1 /* MainTabController.swift in Sources */,
 				9A78B2C62743EF4E00D4ABE1 /* LoginButton.swift in Sources */,
 				9A78B2AE2742F7DD00D4ABE1 /* NotificationsController.swift in Sources */,
+				9A488083276E706C00A02528 /* InputTextView.swift in Sources */,
 				9AA79C4B276874510039B885 /* ProfileCell.swift in Sources */,
+				9A488085276E85C400A02528 /* PostService.swift in Sources */,
 				9AA79C612768B2760039B885 /* User.swift in Sources */,
 				9A78B2B4274392A600D4ABE1 /* Extensions.swift in Sources */,
 				9A78B28D2742E37F00D4ABE1 /* SceneDelegate.swift in Sources */,
